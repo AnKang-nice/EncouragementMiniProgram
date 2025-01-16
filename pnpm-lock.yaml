@@ -20,6 +20,9 @@ importers:
       '@tarojs/plugin-framework-react':
         specifier: 4.0.8
         version: 4.0.8(@tarojs/helper@4.0.8)(@tarojs/runtime@4.0.8)(@tarojs/shared@4.0.8)(@vitejs/plugin-react@4.3.4(vite@4.5.5(@types/node@22.10.5)(less@4.2.1)(sass@1.83.1)(terser@5.37.0)))(react@18.3.1)(vite@4.5.5(@types/node@22.10.5)(less@4.2.1)(sass@1.83.1)(terser@5.37.0))
+      '@tarojs/plugin-http':
+        specifier: ^4.0.9
+        version: 4.0.9(@tarojs/runtime@4.0.8)(@tarojs/shared@4.0.8)(@tarojs/taro@4.0.8(@tarojs/components@4.0.8(@tarojs/helper@4.0.8)(@types/react@18.3.18)(postcss@8.4.49)(react@18.3.1)(rollup@3.29.5))(@tarojs/helper@4.0.8)(@tarojs/shared@4.0.8)(@types/react@18.3.18)(postcss@8.4.49)(rollup@3.29.5))
       '@tarojs/plugin-platform-alipay':
         specifier: 4.0.8
         version: 4.0.8(@tarojs/service@4.0.8)(@tarojs/shared@4.0.8)
@@ -56,6 +59,12 @@ importers:
       '@tarojs/taro':
         specifier: 4.0.8
         version: 4.0.8(@tarojs/components@4.0.8(@tarojs/helper@4.0.8)(@types/react@18.3.18)(postcss@8.4.49)(react@18.3.1)(rollup@3.29.5))(@tarojs/helper@4.0.8)(@tarojs/shared@4.0.8)(@types/react@18.3.18)(postcss@8.4.49)(rollup@3.29.5)
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      qs:
+        specifier: ^6.14.0
+        version: 6.14.0
       react:
         specifier: ^18.0.0
         version: 18.3.1
@@ -1617,6 +1626,14 @@ packages:
         optional: true
       webpack:
         optional: true
+
+  '@tarojs/plugin-http@4.0.9':
+    resolution: {integrity: sha512-HiIAOeW0EYrd98dTS13dzZNvlfODHXU7qfJU+eKUy+r542mfiflR2K5RYB/p3NhLnvTySA4MIP8SAKPPnjzr8w==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@tarojs/runtime': 4.0.9
+      '@tarojs/shared': 4.0.9
+      '@tarojs/taro': 4.0.9
 
   '@tarojs/plugin-platform-alipay@4.0.8':
     resolution: {integrity: sha512-/2/K7Gbmf2sncfZlKcDTZI43hcfxV+gX0N4kB8fANw6ecIQ3t+N1UdRu0StxPIEK9aBc3cd7qvr/4zkrRP+J4A==}
@@ -3861,6 +3878,10 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
+  qs@6.14.0:
+    resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
+    engines: {node: '>=0.6'}
+
   query-string@5.1.1:
     resolution: {integrity: sha512-gjWOsm2SoGlgLEdAGt7a6slVOk9mGiXmPFMqrEhLQ68rhQuBnpfs3+EmlvqKyxnCo9/PPlF+9MtY02S1aFg+Jw==}
     engines: {node: '>=0.10.0'}
@@ -6094,6 +6115,12 @@ snapshots:
       '@vitejs/plugin-react': 4.3.4(vite@4.5.5(@types/node@22.10.5)(less@4.2.1)(sass@1.83.1)(terser@5.37.0))
       react: 18.3.1
       vite: 4.5.5(@types/node@22.10.5)(less@4.2.1)(sass@1.83.1)(terser@5.37.0)
+
+  '@tarojs/plugin-http@4.0.9(@tarojs/runtime@4.0.8)(@tarojs/shared@4.0.8)(@tarojs/taro@4.0.8(@tarojs/components@4.0.8(@tarojs/helper@4.0.8)(@types/react@18.3.18)(postcss@8.4.49)(react@18.3.1)(rollup@3.29.5))(@tarojs/helper@4.0.8)(@tarojs/shared@4.0.8)(@types/react@18.3.18)(postcss@8.4.49)(rollup@3.29.5))':
+    dependencies:
+      '@tarojs/runtime': 4.0.8
+      '@tarojs/shared': 4.0.8
+      '@tarojs/taro': 4.0.8(@tarojs/components@4.0.8(@tarojs/helper@4.0.8)(@types/react@18.3.18)(postcss@8.4.49)(react@18.3.1)(rollup@3.29.5))(@tarojs/helper@4.0.8)(@tarojs/shared@4.0.8)(@types/react@18.3.18)(postcss@8.4.49)(rollup@3.29.5)
 
   '@tarojs/plugin-platform-alipay@4.0.8(@tarojs/service@4.0.8)(@tarojs/shared@4.0.8)':
     dependencies:
@@ -8782,6 +8809,10 @@ snapshots:
       once: 1.4.0
 
   punycode@2.3.1: {}
+
+  qs@6.14.0:
+    dependencies:
+      side-channel: 1.1.0
 
   query-string@5.1.1:
     dependencies:
