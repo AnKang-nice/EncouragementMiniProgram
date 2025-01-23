@@ -1,0 +1,55 @@
+.learn {
+  padding: 0 20px;
+
+  .tabs {
+    position: fixed;
+    background-color: #fff;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    border-bottom: 1px solid #f6f6f6;
+    z-index: 999;
+    &.active {
+      color: red;
+    }
+    .tab {
+      padding: 6px 20px;
+      &.selected {
+        color: red;
+        border-bottom: 1px solid red;
+      }
+    }
+  }
+  .container {
+    padding-top: 100px;
+    .list {
+      .item {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        // background-color: #f6f6f6;background-color
+        margin-bottom: 10px;
+        font-size: 32px;
+        border-radius: 12px;
+        .title {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          color: rgb(39, 78, 206);
+
+          &:active {
+            color: red;
+          }
+          .order {
+            color: rgb(255, 123, 0);
+            padding-right: 6px;
+            font-size: 36px;
+          }
+        }
+      }
+    }
+  }
+}

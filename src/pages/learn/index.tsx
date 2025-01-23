@@ -1,35 +1,42 @@
+import { request } from "@/api";
 import { Text, View } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import { useEffect, useState } from "react";
 import "./index.less";
+import { tabs, tabsKey } from "./options";
 
 export default function Learn() {
   const [frontArticleList, setFrontArticleList] = useState([]);
   const [aiArticleList, setAiArticleList] = useState([]);
+  const [interviewArticleList, setInterviewArticleList] = useState([]);
+  const [selectTabs, setSelectTabs] = useState(tabsKey.hot);
+
   const getArticle = () => {
-    Taro.request({
-      url: "http://localhost:3636/article/frontHot",
-      method: "GET",
-    }).then((res) => {
-      console.log(res, 5565656565);
-      setFrontArticleList(res.data.data);
-    });
+    // Taro.request({
+    //   url: "http://localhost:3636/article/frontHot",
+    //   method: "GET",
+    // }).then((res) => {
+    //   console.log(res, 5565656565);
+    //   setFrontArticleList(res.data.data);
+    // });
 
     Promise.all(
       [
-        Taro.request({
-          url: "http://localhost:3636/article/frontHot",
-          method: "GET",
-        }),
-        Taro.request({
-          url: "http://localhost:3636/article/aiHot",
-          method: "GET",
-        }),
+        request("/article/frontHot", "GET"),
+        request("/article/aiHot", "GET"),
       ].map((item) => item.catch((err) => err))
     ).then((res) => {
       console.log(res, 5565656565);
-      setFrontArticleList(res[0].data.data);
-      setAiArticleList(res[1].data.data);
+      setFrontArticleList(res[0].data);
+      setAiArticleList(res[1].data);
+    });
+  };
+
+  const selectTabsFn = (val) => {
+    setSelectTabs(val.key);
+    request("/article/learnData", "GET", { type: val.key }).then((res) => {
+      console.log(res, 5565656565);
+      setInterviewArticleList(res.data);
     });
   };
 
@@ -40,31 +47,42 @@ export default function Learn() {
   };
 
   useEffect(() => {
-    getArticle();
+    // getArticle();
+    selectTabsFn(tabs[0]);
   }, []);
 
   return (
-    <View className="index">
-      <Text>Learn</Text>
-      {frontArticleList.map((item, index) => {
-        return (
-          <View key={index}>
-            <Text onClick={() => viewContent(item.content.content_id)}>
-              {item.content.title}
-            </Text>
-          </View>
-        );
-      })}
-      <Text>AI</Text>
-      {aiArticleList.map((item, index) => {
-        return (
-          <View key={index}>
-            <Text onClick={() => viewContent(item.content.content_id)}>
-              {item.content.title}
-            </Text>
-          </View>
-        );
-      })}
+    <View className="learn">
+      <View className="tabs">
+        {tabs.map((item, index) => {
+          return (
+            <View
+              key={index}
+              onClick={() => selectTabsFn(item)}
+              className={selectTabs === item.key ? "selected tab" : "tab"}
+            >
+              {item.title}
+            </View>
+          );
+        })}
+      </View>
+      <View className="container">
+        <View className="list">
+          {interviewArticleList.map((item, index) => {
+            return (
+              <View key={index} className="item">
+                <Text
+                  className="title"
+                  onClick={() => viewContent(item.content.content_id)}
+                >
+                  <Text className="order">{`${index + 1}. `}</Text>
+                  <Text> {item.content.title}</Text>
+                </Text>
+              </View>
+            );
+          })}
+        </View>
+      </View>
     </View>
   );
 }

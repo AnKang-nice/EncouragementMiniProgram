@@ -10,6 +10,7 @@ export default function Encourage () {
   return (
     <View className='index'>
       <Text>鸡汤</Text>
+      打字机效果
     </View>
   )
 }
