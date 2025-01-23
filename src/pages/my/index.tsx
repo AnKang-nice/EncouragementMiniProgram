@@ -1,5 +1,5 @@
-import { View, Text } from '@tarojs/components'
-import Taro,{ useLoad } from '@tarojs/taro'
+import { Text, View } from '@tarojs/components'
+import Taro, { useLoad } from '@tarojs/taro'
 import './index.less'
 
 export default function My () {
@@ -9,7 +9,7 @@ export default function My () {
 
   const toMyBlog = () => {
     Taro.navigateTo({
-          url: `/components/webView/index?url=https://blog.lsxbak.cn/`, // URL 需要进行编码
+          url: '/components/webView/index?url=https://blog.lsxbak.cn/', // URL 需要进行编码
         });
   }
   return (

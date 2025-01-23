@@ -6,31 +6,9 @@ import "./index.less";
 import { tabs, tabsKey } from "./options";
 
 export default function Learn() {
-  const [frontArticleList, setFrontArticleList] = useState([]);
-  const [aiArticleList, setAiArticleList] = useState([]);
   const [interviewArticleList, setInterviewArticleList] = useState([]);
   const [selectTabs, setSelectTabs] = useState(tabsKey.hot);
 
-  const getArticle = () => {
-    // Taro.request({
-    //   url: "http://localhost:3636/article/frontHot",
-    //   method: "GET",
-    // }).then((res) => {
-    //   console.log(res, 5565656565);
-    //   setFrontArticleList(res.data.data);
-    // });
-
-    Promise.all(
-      [
-        request("/article/frontHot", "GET"),
-        request("/article/aiHot", "GET"),
-      ].map((item) => item.catch((err) => err))
-    ).then((res) => {
-      console.log(res, 5565656565);
-      setFrontArticleList(res[0].data);
-      setAiArticleList(res[1].data);
-    });
-  };
 
   const selectTabsFn = (val) => {
     setSelectTabs(val.key);
