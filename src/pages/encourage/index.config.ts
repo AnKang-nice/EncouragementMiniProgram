@@ -1,3 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: '鸡汤'
-})
+  navigationBarTitleText: "鸡汤",
+  
+});

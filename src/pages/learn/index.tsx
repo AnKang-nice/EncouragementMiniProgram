@@ -25,7 +25,6 @@ export default function Learn() {
   };
 
   useEffect(() => {
-    // getArticle();
     selectTabsFn(tabs[0]);
   }, []);
 
